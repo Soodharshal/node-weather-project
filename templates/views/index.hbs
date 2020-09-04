@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="icon" href='./images/weather.png'>
+  <link rel='stylesheet' href="./css/styles.css">
+  <title>index</title>
+
+</head>
+
+<body>
+  <div class="main-content">
+    <h1> {{>header}}</h1>
+    <form>
+      Your Location: <input placeholder="enter location">
+      <button>Submit</button>
+    </form>
+    <p id="msg-1"></p>
+    <br />
+    <p id="msg-2"></p>
+    {{!-- <h1>Hi {{title}} !!</h1> --}}
+  </div>
+  <img style="padding-top:10px" src="./images/107085000_3006357492924644_1087560548244041913_n.jpg"
+    alt="Girl in a jacket" />
+  {{>footer}}
+  <script src='./js/app.js'></script>
+</body>
+
+</html>
