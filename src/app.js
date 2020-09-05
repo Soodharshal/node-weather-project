@@ -68,7 +68,7 @@ app.get('/weather', (req, res) => {
                     error: 'unable to find the address'
                 })
             }
-            forecast(latitude, longitude, (error, { temprature, perception }) => {
+            forecast(latitude, longitude, (error, { temprature, perception, observationTime }) => {
                 if (error) {
                     if (error) {
                         return res.send({
@@ -76,14 +76,16 @@ app.get('/weather', (req, res) => {
                         })
                     }
                 }
-                if (!(temprature && perception)) {
+                if (!(temprature && perception && observationTime)) {
                     return res.send({
                         location: 'location not found'
                     })
                 }
                 return res.send({
                     forecast: perception,
-                    location
+                    location,
+                    temprature,
+                    observationTime
                 })
             })
         })

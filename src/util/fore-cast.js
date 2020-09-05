@@ -15,7 +15,8 @@ const foreCast = (latitude, longitude, callback) => {
     request({ url, json: true }, (error, { body }) => {
         const weather_stack = {
             temprature: body.current ? body.current.temperature : null,
-            perception: body.current ? body.current.weather_descriptions[0] : null
+            perception: body.current ? body.current.weather_descriptions[0] : null,
+            observationTime: body.current ? body.current.observation_time : null
         }
         callback(error, weather_stack)
     })
