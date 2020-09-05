@@ -4,12 +4,12 @@ const hbs = require('hbs');
 const forecast = require('../src/util/fore-cast')
 const geoCode = require('../src/util/geo-code')
 const app = express()
-
+port = process.env.PORT || 3000;
+// yield
 //declare the path for express config
 const publicDirectorPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/partials')
-
 
 //setup HandleBars engine
 app.set('view engine', 'hbs');
@@ -55,7 +55,7 @@ app.get('/weather', (req, res) => {
         return res.send({
             error: "you must provide an address"
         })
-    } 
+    }
     if (req.query.address) {
         geoCode(req.query.address, (error, { latitude, longitude, location } = {}) => {
             if (error) {
@@ -120,6 +120,6 @@ app.get('*', (req, res) => {
         error: "Page not found"
     })
 })
-app.listen(3000, () => {
-    console.log('server starting on port 3000')
+app.listen(port, () => {
+    console.log('server starting on ' + port);
 })
